@@ -15,7 +15,7 @@ jobs:
       - name: open dir
         run: cd $GITHUB_WORKSPACE
       - name: main_test
-        run: java -classpath src:test/lib/* org.junit.runner.JUnitCore functions_test.java empty_test.java speed_test.java
+        run: java -classpath src:test/lib/* org.junit.runner.JUnitCore EmptyTest.java SpeedTest.java CorrectTest.java
       - name: fail 
         uses: appleboy/telegram-action@master 
         if: failure() 
