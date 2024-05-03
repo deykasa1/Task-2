@@ -1,0 +1,7 @@
+# ТЗ2: Тестирование, CI и подключение ТГ-бота <hr>
+### BIO
+Дейкало Андрей Сергеевич, группа ББИ237
+### Текущее состояние тестов
+![](https://github.com/deykasa1/task-2/actions/workflows/mavel.yaml/badge.svg?branch=develop) <br>
+### График зависимости времени от размера входного файла 
+![](https://github.com/deykasa1/task-2/blob/develop/data_speed.png)
