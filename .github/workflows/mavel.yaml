@@ -1,0 +1,34 @@
+name: deykaloas
+on:  
+  push: 
+    branches: [ "develop" ] 
+  pull_request: 
+    branches: [ "develop" ] 
+  workflow_dispatch: 
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+
+    steps: 
+      - uses: actions/checkout@v3 
+      - name: open dir
+        run: cd $GITHUB_WORKSPACE
+      - name: main_test
+        run: java -classpath src:test/lib/* org.junit.runner.JUnitCore functions_test.java empty_test.java speed_test.java
+      - name: fail 
+        uses: appleboy/telegram-action@master 
+        if: failure() 
+        with: 
+          to: ${{ secrets.TELEGRAM_TO }} 
+          token: ${{ secrets.TELEGRAM_TOKEN }} 
+          message: | 
+              Ошибочка :(
+      - name: ok 
+        uses: appleboy/telegram-action@master 
+        if: success() 
+        with: 
+          to: ${{ secrets.TELEGRAM_TO }} 
+          token: ${{ secrets.TELEGRAM_TOKEN }} 
+          message: | 
+            Все получилось
